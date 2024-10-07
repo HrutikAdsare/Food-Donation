@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='s.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('getinvolved') }}">Get Involved</a></li>
+                <li><a href="{{ url_for('donate') }}">Donate</a></li>
+                <li><a href="{{ url_for('auth') }}">Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="about-section">
+        <h1>About Our Food Donation Platform</h1>
+        <p>Our mission is to connect food donors with those in need. We believe that no one should go hungry, and through our platform, we aim to reduce food waste while helping our community.</p>
+        <h2>Our Vision</h2>
+        <p>We envision a world where surplus food is redirected to those who need it most, fostering a sense of community and support.</p>
+        <h2>Our Goals</h2>
+        <ul>
+            <li>To raise awareness about food waste and its impact.</li>
+            <li>To provide a seamless platform for food donation.</li>
+            <li>To engage volunteers in our mission to help those in need.</li>
+        </ul>
+        <h2>Get Involved</h2>
+        <p>If you are interested in helping us achieve our goals, consider volunteering or donating food. Every little bit helps!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Food Donation Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>

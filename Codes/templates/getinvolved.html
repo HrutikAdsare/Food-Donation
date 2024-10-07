@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Involved - Volunteer Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='s.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('getinvolved') }}">Get Involved</a></li>
+                <li><a href="{{ url_for('donate') }}">Donate</a></li>
+                <li><a href="{{ url_for('auth') }}">Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="volunteer-form-section">
+        <h1>Become a Volunteer</h1>
+        <p>Help us distribute food to the needy by becoming a volunteer. Fill out the form below to get involved!</p>
+        <form class="volunteer-form" action="/volunteer_registration" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="text" name="location" placeholder="Location" required>
+            <textarea name="availability" placeholder="Availability (e.g., weekends, weekdays)" required></textarea>
+            <button type="submit">Register as Volunteer</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 Food Donation Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>

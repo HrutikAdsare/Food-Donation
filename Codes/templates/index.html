@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Donation Platform</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='s.css') }}">
+
+    <script>
+      // Simulate a user signup status
+      let isUserSignedUp = false; // Change this to true for testing signed-up user
+
+      function checkSignup() {
+        if (!isUserSignedUp) {
+          alert("Please sign up before donating.");
+          window.location.href = "{{ url_for('auth') }}"; // Redirect to signup page
+        } else {
+          window.location.href = "{{ url_for('donate') }}"; // Redirect to donate page
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+          <li><a href="{{ url_for('getinvolved') }}">Get Involved</a></li>
+          <li><a href="{{ url_for('donate') }}">Donate</a></li>
+          <li><a href="{{ url_for('auth') }}">Signup</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="hero-section">
+      <h1>Welcome to Our Food Donation Platform</h1>
+      <p>Your generosity can make a difference!</p>
+      <button onclick="checkSignup();">Donate Now</button>
+    </section>
+    <footer>
+      <p>&copy; 2024 Food Donation Platform. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

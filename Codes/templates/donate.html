@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Food</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='s.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('getinvolved') }}">Get Involved</a></li>
+                <li><a href="{{ url_for('donate') }}">Donate</a></li>
+                <li><a href="{{ url_for('auth') }}">Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h1>Donate Food</h1>
+        <form action="/donate" method="POST">
+            <label for="foodName">Food Name:</label>
+            <input type="text" id="foodName" name="foodName" required><br>
+            <label for="location">Your Location:</label>
+            <input type="text" id="location" name="location" required><br>
+            <label for="quantity">Quantity:</label>
+            <input type="text" id="quantity" name="quantity" required><br>
+            <button type="submit">Donate</button>
+        </form>
+    </section>
+</body>
+</html>
