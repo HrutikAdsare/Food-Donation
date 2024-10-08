@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash  # Import password hashing functions
 
 app = Flask(__name__)
 app.secret_key = '35cc94b2b79f4b1664e33c0d3e33cd04'  # Replace with your own secret key for session management
 
-# Configure the SQLite database (you can change this to any database you prefer)
+# Configure the SQLite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -80,8 +81,9 @@ def signup():
         flash('Email is already registered. Please log in or use another email.', 'error')
         return redirect(url_for('auth'))
     
-    # If email is not in use, proceed to create the new user
-    new_user = User(username=username, email=email, password=password)
+    # Hash the password before storing it in the database
+    hashed_password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
+    new_user = User(username=username, email=email, password=hashed_password)
     
     # Add user to the database
     db.session.add(new_user)
@@ -90,12 +92,36 @@ def signup():
     flash('Signup successful! You can now log in.', 'success')
     return redirect(url_for('auth'))
 
-
 # Route to handle login (POST method)
 @app.route('/login', methods=['POST'])
 def login():
-    # You can implement login logic here (e.g., check username/password)
-    return redirect(url_for('home'))  # Redirect as needed
+    email = request.form['email']
+    password = request.form['password']
+    
+    # Check if the user exists
+    user = User.query.filter_by(email=email).first()
+    
+    if user:
+        # Verify the password
+        if check_password_hash(user.password, password):
+            session['user_id'] = user.id  # Store the user's ID in the session
+            session['username'] = user.username
+            flash('Login successful!', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Invalid password. Please try again.', 'error')
+    else:
+        flash('Email not found. Please sign up.', 'error')
+    
+    return redirect(url_for('auth'))
+
+# Route to handle logout
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)  # Remove the user_id from the session
+    session.pop('username', None)
+    flash('You have been logged out.', 'success')
+    return redirect(url_for('home'))
 
 # Route to handle volunteer registration (POST method)
 @app.route('/volunteer_registration', methods=['POST'])
@@ -131,12 +157,11 @@ def handle_donation():
     flash('Thank you for your donation!', 'success')
     return redirect(url_for('donate'))
 
+# Route to display users (for admin use)
 @app.route('/users')
 def display_users():
     users = User.query.all()  # Fetch all users from the User table
     return render_template('users.html', users=users)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
