@@ -50,6 +50,7 @@
     <section class="form-container">
         <div class="toggle-container">
             <span id="signupBtn" class="toggle-btn active">Signup</span> | 
+            <span id="loginBtn" class="toggle-btn">Login</span>
         </div>
 
         <!-- Signup Form -->
@@ -64,19 +65,37 @@
             <button type="submit">Sign Up</button>
         </form>
 
+        <!-- Login Form -->
+        <form id="loginForm" action="/login" method="POST">
+            <h2>Login</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="loginEmail" name="email" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="loginPassword" name="password" required><br>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
         
     <script>
         const signupBtn = document.getElementById('signupBtn');
-     
+        const loginBtn = document.getElementById('loginBtn');
         const signupForm = document.getElementById('signupForm');
-      
+        const loginForm = document.getElementById('loginForm');
 
         // Toggle forms
-        signupBtn.addEventListener('click', function() {
+        signupBtn.addEventListener('click', () => {
             signupForm.classList.add('active');
-           
+            loginForm.classList.remove('active');
             signupBtn.classList.add('active');
-           
+            loginBtn.classList.remove('active');
+        });
+
+        loginBtn.addEventListener('click', () => {
+            loginForm.classList.add('active');
+            signupForm.classList.remove('active');
+            loginBtn.classList.add('active');
+            signupBtn.classList.remove('active');
         });
 
        
