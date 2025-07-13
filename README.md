@@ -111,9 +111,3 @@ php -S localhost:8000
    - Submit or manage donations.
 
 ---
-
-## 👨‍💻 Developer
-
-Built with ❤️ by [Hrutik Adsare](https://huggingface.co/Hrutik-Adsare)
-
-```
