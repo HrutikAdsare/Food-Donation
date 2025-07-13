@@ -101,13 +101,10 @@ composer install
 
    - Serve via built-in PHP server:
      ```bash
+     php -S localhost:8000
+     - Open `http://localhost:8000/index.php` in your browser.
      ```
-
-php -S localhost:8000
-
-```
-   - Open `http://localhost:8000/index.php` in your browser.
-
+   
 5. **Use the App**
    - Sign up as a donor or volunteer.
    - Submit or manage donations.
