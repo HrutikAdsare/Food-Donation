@@ -96,6 +96,8 @@ composer install
      -- and other tables
      ```
    - Update database credentials in `db_connect.php`.
+   - **Configure Gmail Settings**
+     In order to send email notifications via PHPMailer, open `donate.php` and locate the SMTP setup block. Update the placeholders with your Gmail address and app password
 
 4. **Run the App**
 
