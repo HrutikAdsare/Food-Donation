@@ -73,9 +73,11 @@ Food-Donation/
 
 1. **Clone the repo**
    ```bash
+   git clone [https://github.com/HrutikAdsare/Food-Donation.git](https://github.com/HrutikAdsare/Food-Donation.git)
+   cd Food-Donation
    ```
 
-git clone [https://github.com/HrutikAdsare/Food-Donation.git](https://github.com/HrutikAdsare/Food-Donation.git) cd Food-Donation
+
 
 ````
 
