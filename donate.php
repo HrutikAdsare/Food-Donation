@@ -1,4 +1,4 @@
-<?php
+r<?php
 session_start(); // Start session
 
 // If the user is not logged in, redirect them to the login/signup page
@@ -111,13 +111,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $mail->isSMTP();
                     $mail->Host       = 'smtp.gmail.com';         // Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                     // Enable SMTP authentication
-                    $mail->Username   = 'hrutik465@gmail.com';    // Gmail username
-                    $mail->Password   = 'wafb niag lucz jgix';      // Gmail app password (not regular password)
+                    $mail->Username   = 'Enter Your Gmail';    // Gmail username
+                    $mail->Password   = 'Enter password';      // Gmail app password (not regular password)
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption
                     $mail->Port       = 587;                      // TCP port to connect to
 
                     // Recipients
-                    $mail->setFrom('hrutik465@gmail.com', 'FoodForGood');
+                    $mail->setFrom('Your Gmail', 'FoodForGood');
                     $mail->addAddress($volunteer_email); // Add volunteer's email
 
                     // Content
